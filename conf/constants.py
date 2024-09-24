@@ -66,5 +66,4 @@ config_map = {"develop": DevelopmentConfig, "product": ProductionConfig}
 
 
 if __name__ == "__main__":
-    print(os.path.abspath(""))
     print(base_dir)

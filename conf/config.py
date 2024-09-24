@@ -8,9 +8,9 @@ from dynaconf import Dynaconf
 
 root_path = Path(__file__).parent.parent.absolute()
 settings = Dynaconf(
-    # root_path=str(root_path),  # 解决 PyCharm OSError: Starting path not found
+    root_path=str(root_path),  # 解决 PyCharm OSError: Starting path not found
     envvar_prefix="DYNACONF",
-    settings_files=["./settings.yaml", "./.secrets.yaml"],
+    settings_files=["./conf/settings.yaml", "./conf/.secrets.yaml"],
     environments=True,
     load_dotenv=True,
     env="boe",
