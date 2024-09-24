@@ -38,13 +38,13 @@ class Config:
 
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     # flask-session配置 使用随机的字符串
-    SECRET_KEY = "ljx-test-palnt-srv"
+    SECRET_KEY = "ljx-tests-palnt-srv"
     # flask-session配置
     SESSION_TYPE = "redis"
     SESSION_USE_SIGNER = True  # 对cookie中session_id进行隐藏处理 加密混淆
     PERMANENT_SESSION_LIFETIME = 200  # session数据的有效期，单位秒
     # JWT配置秘钥
-    JWT_SECRET_KEY = "ljx-test-palnt-srv"  # 加密
+    JWT_SECRET_KEY = "ljx-tests-palnt-srv"  # 加密
     # JWT配置过期时间
     JWT_ACCESS_TOKEN_EXPIRES = timedelta(hours=6)  # 1小时
     UPLOAD_FOLDER = "./logs"

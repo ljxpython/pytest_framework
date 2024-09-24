@@ -12,7 +12,7 @@
 
      日志存储位置
      根目录下的log目录
-     其中,test{_xxx}.log 日志中存储我们通常使用的case
+     其中,tests{_xxx}.log 日志中存储我们通常使用的case
           error.log 日志中记录较为关键的崩溃及失败信息，信息包括但不限于以下：调用链路的logID，错误的case名称及错误的相关原因
 
 """
@@ -36,9 +36,9 @@ if not os.path.exists(LOG_PATH):
 ##测试代码
 
 # logger.add(os.path.join(LOG_PATH,"test_{time}.log"))
-# logger.add(os.path.join(LOG_PATH,"test.log"),rotation="1 MB",retention="10 days",encoding="utf-8")  ## 目前，我们设置成自动清除存满100MB的文件跟换到下一个文件
-# logger.add(os.path.join(LOG_PATH,"test.log"),rotation="",encoding="utf-8")
-# logger.add(os.path.join(LOG_PATH,"test.log"),rotation="",encoding="utf-8")
+# logger.add(os.path.join(LOG_PATH,"tests.log"),rotation="1 MB",retention="10 days",encoding="utf-8")  ## 目前，我们设置成自动清除存满100MB的文件跟换到下一个文件
+# logger.add(os.path.join(LOG_PATH,"tests.log"),rotation="",encoding="utf-8")
+# logger.add(os.path.join(LOG_PATH,"tests.log"),rotation="",encoding="utf-8")
 
 ## 按照日志等级记录到不同文件中
 # logger.add(os.path.join(LOG_PATH,"test1.log"),level="INFO",filter=lambda x: "INFO" in str(x["level"]).upper())
@@ -49,7 +49,7 @@ if not os.path.exists(LOG_PATH):
 class MyLogger(object):
     def __init__(
         self,
-        log_test_path=os.path.join(LOG_PATH, "test.log"),
+        log_test_path=os.path.join(LOG_PATH, "tests.log"),
         log_error_path=os.path.join(LOG_PATH, "error.log"),
         log_warn_path=os.path.join(LOG_PATH, "debug.log"),
     ):
@@ -110,6 +110,6 @@ logger = MyLogger().get_logger()
 
 if __name__ == "__main__":
     print(LOG_PATH)
-    logger.info("test info")
-    logger.debug("test debug")
+    logger.info("tests info")
+    logger.debug("tests debug")
     logger.warning(" error")

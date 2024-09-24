@@ -102,7 +102,7 @@ class DataSovle(object):
 
     def save_file(
         self,
-        file: str = os.path.join(logs_dir, "test.csv"),
+        file: str = os.path.join(logs_dir, "tests.csv"),
         df: Union[dict, pd.DataFrame] = None,
     ):
         """

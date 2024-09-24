@@ -167,5 +167,5 @@ class AdbTools(object):
 
 if __name__ == "__main__":
     devices = AdbTools(host="host", port="port")
-    resp = devices.shell(cmd="echo test")
+    resp = devices.shell(cmd="echo tests")
     print(resp)
