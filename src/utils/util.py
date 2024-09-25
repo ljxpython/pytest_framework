@@ -15,7 +15,7 @@ import humps
 import requests
 
 from conf.config import settings
-from test_lib.utils.log_moudle import logger
+from src.utils.log_moudle import logger
 
 # config = settings.client_config
 
@@ -30,9 +30,6 @@ def wait_for(condition: Callable, timeout: int = 30, interval: int = 1):
         if run_time >= timeout:
             return
         time.sleep(interval)
-
-
-
 
 
 def remove_empty_values(
@@ -146,8 +143,6 @@ def get_radmon_str(
 
     random_string = "".join(random.choices(characters, k=length - prefix_len))
     return prefix + random_string
-
-
 
 
 def write_properties_file(filename: str, properties: dict):

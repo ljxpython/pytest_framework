@@ -1,5 +1,5 @@
 # from conf.config import settings
-from test_lib.utils.log_moudle import logger
+from src.utils.log_moudle import logger
 
 
 def test_demo():
