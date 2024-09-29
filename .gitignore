@@ -36,6 +36,8 @@ share/python-wheels/
 MANIFEST
 
 **/output
+/reports
+conf/settings.local.yaml
 
 # PyInstaller
 #  Usually these files are written by a python script from a template
