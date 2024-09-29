@@ -11,9 +11,10 @@ from filelock import FileLock
 sys.path.append(os.getcwd())
 
 from conf.config import settings
+
 print(settings.DB)
-from test_lib.utils import util
-from test_lib.utils.log_moudle import logger
+from src.utils import util
+from src.utils.log_moudle import logger
 
 # 设置 faker 日志级别为 ERROR，减少不必要的 debug 信息输出
 logging.getLogger("faker").setLevel(logging.ERROR)
