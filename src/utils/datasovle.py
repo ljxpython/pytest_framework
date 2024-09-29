@@ -24,7 +24,7 @@ import numpy as np
 import pandas as pd
 
 from conf.constants import logs_dir
-from test_lib.utils.log_moudle import logger
+from src.utils.log_moudle import logger
 
 
 class DataSovle(object):
