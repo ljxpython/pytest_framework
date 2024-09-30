@@ -9,5 +9,4 @@ class FlaskAuth(AuthBase):
 
     def __call__(self, r):
         r.headers['Authorization'] = f'Bearer {self.jwt_token}'
-        logger.info(r.headers)
         return r
