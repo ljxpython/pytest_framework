@@ -37,6 +37,7 @@ MANIFEST
 
 **/output
 /reports
+/html
 conf/settings.local.yaml
 
 # PyInstaller

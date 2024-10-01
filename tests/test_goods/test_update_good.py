@@ -9,7 +9,8 @@
 from assertpy import assert_that
 import allure
 
-from src.utils.log_moudle import logger
+# from src.utils.log_moudle import logger
+from loguru import logger
 from src.client.flask_client.flask_client import flask_clinet
 
 

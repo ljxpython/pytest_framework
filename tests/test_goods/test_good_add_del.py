@@ -7,7 +7,9 @@
 from assertpy import assert_that
 import allure
 
-from src.utils.log_moudle import logger
+from loguru import logger
+
+# from src.utils.log_moudle import logger
 from src.client.flask_client.flask_client import flask_clinet
 
 
@@ -26,12 +28,14 @@ class TestGoodAddDel(object):
             4. 确认商品删除完成
         '''
         with allure.step("1. 添加商品"):
+            logger.info(f"添加商品完成")
             pass
         with allure.step("2. 确认商品添加完成"):
             pass
         with allure.step("3. 删除商品"):
             pass
         with allure.step("4. 确认商品删除完成"):
+            assert_that(val=2,).is_equal_to(1)
             pass
 
 

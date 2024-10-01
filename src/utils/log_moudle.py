@@ -21,6 +21,8 @@ import os
 import sys
 
 from loguru import logger
+import logging
+
 
 from conf.constants import base_dir
 
@@ -100,9 +102,15 @@ class MyLogger(object):
             retention="10 days",
             encoding="utf-8",
         )
+        # self.logger.add(PropagateHandler())
 
     def get_logger(self):
         return self.logger
+
+class PropagateHandler(logging.Handler):
+    def emit(self, record):
+        logging.getLogger(record.name).handle(record)
+
 
 
 # logger.info("hello world")
