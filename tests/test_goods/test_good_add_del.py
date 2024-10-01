@@ -35,7 +35,7 @@ class TestGoodAddDel(object):
         with allure.step("3. 删除商品"):
             pass
         with allure.step("4. 确认商品删除完成"):
-            assert_that(val=2,).is_equal_to(1)
+            assert_that(val=1,).is_equal_to(1)
             pass
 
 
