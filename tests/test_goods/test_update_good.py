@@ -5,7 +5,7 @@
     测试重要性: P0
 
 '''
-
+import pytest
 from assertpy import assert_that
 import allure
 
@@ -17,6 +17,7 @@ from src.client.flask_client.flask_client import flask_clinet
 class TestGoodUpdate(object):
     @allure.feature("商品管理")
     @allure.story("更新商品")
+    @pytest.mark.P0
     def test_good_update(self):
         '''
         测试用例: 更新商品
