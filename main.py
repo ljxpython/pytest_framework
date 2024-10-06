@@ -1,11 +1,11 @@
 import os
 import sys
 import pytest
+from pathlib import Path
 from datetime import datetime
 
 from conf.config import settings
 from src.utils.log_moudle import logger
-from pytest_loguru import plugin
 from src.model.case import CaseMoudle, CaseFunc,Project,Suite, TestResult, CaseTag,TestPlan
 from src.model.modelsbase import database
 from src.utils.file_operation import file_opreator
@@ -19,6 +19,8 @@ import click
 @click.option("--allure_dir", default="./reports", help="指定测试报告",)
 @click.option("--result_id",help="唯一标识,用于存储测试相关数据")
 def run_pytest(cases:str,allure_dir:str,result_id:str):
+    cwd_path = str(Path().cwd())
+    nginx_url = settings.test.nginx_url
     # 连接数据库
     database.connect()
     result = TestResult.get(id=result_id)
@@ -34,7 +36,6 @@ def run_pytest(cases:str,allure_dir:str,result_id:str):
         ret_code = pytest.main(["-s", "-v", *cases.split(',')])
     # 如果case和allure_dir参数都不为空,则执行指定测试用例并生成测试报告
     else:
-        logger.info("test")
         logger.info(["-s", "-v", *cases.split(sep=" ",), "--alluredir", f"{allure_dir}/results"])
         ret_code = pytest.main(["-s", "-v", *cases.split(sep=" ",), "--alluredir", f"{allure_dir}/results"])
     if ret_code == pytest.ExitCode.OK:
@@ -46,12 +47,16 @@ def run_pytest(cases:str,allure_dir:str,result_id:str):
     # 生成测试报告
     os.system(f"allure generate {allure_dir}/results -o {allure_dir}/report --clean")
     logger.info(f"测试报告已生成,路径为:{allure_dir}/report")
-    result.report_link = f"{allure_dir}/report/index.html"
+    result.report_link = f"{allure_dir}/report/index.html".replace(cwd_path, nginx_url)
     result.save()
     # 打包测试相关的产物
     file_opreator.tar_packge(output_filename=f"{allure_dir}.tar.gz", source_dir=f"{allure_dir}")
-    result.report_download = f"{allure_dir}.tar.gz"
+    report_path = f"{allure_dir}.tar.gz".replace(cwd_path, nginx_url)
+    logger.info(report_path)
+    result.report_download = report_path
     result.save()
+    # 路径替换,前缀为settings.test.nginx_url的路径
+
     # 测试完成
     result.status = 1
     result.save()

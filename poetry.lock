@@ -928,23 +928,6 @@ pluggy = ">=1.5,<2"
 dev = ["argcomplete", "attrs (>=19.2)", "hypothesis (>=3.56)", "mock", "pygments (>=2.7.2)", "requests", "setuptools", "xmlschema"]
 
 [[package]]
-name = "pytest-loguru"
-version = "0.4.0"
-description = "Pytest Loguru"
-optional = false
-python-versions = ">=3.8"
-files = [
-    {file = "pytest_loguru-0.4.0-py3-none-any.whl", hash = "sha256:3cc7b9c6b22cb158209ccbabf0d678dacd3f3c7497d6f46f1c338c13bee1ac77"},
-    {file = "pytest_loguru-0.4.0.tar.gz", hash = "sha256:0d9e4e72ae9bfd92f774c666e7353766af11b0b78edd59c290e89be116050f03"},
-]
-
-[package.dependencies]
-loguru = "*"
-
-[package.extras]
-test = ["pytest", "pytest-cov"]
-
-[[package]]
 name = "pytest-ordering"
 version = "0.6"
 description = "pytest plugin to run your tests in a specific order"
@@ -1221,4 +1204,4 @@ dev = ["black (>=19.3b0)", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.12"
-content-hash = "6763859d4adc9dc43222919b667b498617f5cdba27a143856f305dcccc9586d9"
+content-hash = "06b8132117ba04925dc72c1cdae9e9a0592bffeaa16d92f9d014e096e7ceab22"
