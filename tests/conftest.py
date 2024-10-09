@@ -7,14 +7,15 @@ from pathlib import Path
 import pytest
 from filelock import FileLock
 
-# 在conftest.py文件中，使用sys.path.append()方法将当前工作目录添加到Python的模块搜索路径中，这样就可以在测试文件中导入自定义的模块了。
-sys.path.append(os.getcwd())
-
 from conf.config import settings
-
 from src.utils import util
-# from src.utils.log_moudle import logger
-from loguru import logger
+from src.utils.log_moudle import logger
+
+# 在conftest.py文件中，使用sys.path.append()方法将当前工作目录添加到Python的模块搜索路径中，这样就可以在测试文件中导入自定义的模块了。
+# sys.path.append(os.getcwd())
+
+
+# from loguru import logger
 
 # 设置 faker 日志级别为 ERROR，减少不必要的 debug 信息输出
 logging.getLogger("faker").setLevel(logging.ERROR)
