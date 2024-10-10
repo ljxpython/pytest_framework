@@ -6,7 +6,7 @@ from datetime import datetime
 
 from conf.config import settings
 from src.utils.log_moudle import logger
-from src.model.case import CaseMoudle, CaseFunc,Project,Suite, TestResult, CaseTag,TestPlan
+from src.model.auto_pytest import CaseMoudle, CaseFunc,Project,Suite, TestResult, CaseTag,TestPlan
 from src.model.modelsbase import database
 from src.utils.file_operation import file_opreator
 
