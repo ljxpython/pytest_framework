@@ -53,6 +53,8 @@ class Suite(BaseModel):
     describe = TextField(verbose_name="套件描述")
     # 需要执行的case集
     case_ids = TextField(verbose_name="需要执行的case集")
+    # case_sences,
+    case_sences = TextField(verbose_name="需要执行的case场景集")
     # 测试类型
     # test_type = CharField(max_length=100, null=False, verbose_name="测试类型")
     # 测试环境 线上线下
@@ -103,6 +105,10 @@ class TestResult(BaseModel):
     test_type = CharField(max_length=100, null=True, verbose_name="测试类型")
     # 测试环境 线上线下
     test_env = CharField(max_length=100, null=True, verbose_name="测试环境")
+    # task_id
+    task_id = CharField(max_length=100, null=True, verbose_name="任务id")
+    # 如果有测试计划,则会有testplan_id字段
+    plan_id = IntegerField(null=True, verbose_name="测试计划id")
 
 
 class CaseTag(BaseModel):
@@ -110,10 +116,10 @@ class CaseTag(BaseModel):
 
 
 if __name__ == "__main__":
-    # # 删除表
-    database.drop_tables(
-        [CaseMoudle, CaseFunc, Project, Suite, TestPlan, TestResult, CaseTag]
-    )
+    # 删除表
+    # database.drop_tables(
+    #     [CaseMoudle, CaseFunc, Project, Suite, TestPlan, TestResult, CaseTag]
+    # )
     # # 创建表
     database.create_tables(
         [CaseMoudle, CaseFunc, Project, Suite, TestPlan, TestResult, CaseTag]
