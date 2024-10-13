@@ -38,7 +38,9 @@ from src.utils.log_moudle import logger
 @click.option("--result_id", type=int, help="唯一标识,用于存储测试相关数据")
 def run_pytest(cases: str, allure_dir: str, result_id: str):
     cwd_path = str(Path().cwd())
-    nginx_url = settings.test.nginx_url
+    logger.info(cwd_path)
+    logger.info(settings.nginx.pytest_static_dir)
+    nginx_url = settings.nginx.static_url
     # 连接数据库
     database.connect()
 
@@ -88,13 +90,13 @@ def run_pytest(cases: str, allure_dir: str, result_id: str):
     # 生成测试报告
     os.system(f"allure generate {allure_dir}/results -o {allure_dir}/report --clean")
     logger.info(f"测试报告已生成,路径为:{allure_dir}/report")
-    result.report_link = f"{allure_dir}/report/index.html".replace(cwd_path, nginx_url)
+    result.report_link = f"{allure_dir}/report/index.html".replace(settings.nginx.pytest_static_dir, nginx_url)
     result.save()
     # 打包测试相关的产物
     file_opreator.tar_packge(
         output_filename=f"{allure_dir}.tar.gz", source_dir=f"{allure_dir}"
     )
-    report_path = f"{allure_dir}.tar.gz".replace(cwd_path, nginx_url)
+    report_path = f"{allure_dir}.tar.gz".replace(settings.nginx.pytest_static_dir, nginx_url)
     logger.info(report_path)
     result.report_download = report_path
     result.save()
