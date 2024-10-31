@@ -97,7 +97,7 @@ def run_pytest(cases: str, allure_dir: str, result_id: str):
         output_filename=f"{allure_dir}.tar.gz", source_dir=f"{allure_dir}"
     )
     report_path = f"{allure_dir}.tar.gz".replace(settings.nginx.pytest_static_dir, nginx_url)
-    logger.info(report_path)
+    logger.info(f"测试报告已打包,路径为:{report_path}")
     result.report_download = report_path
     result.save()
     # 路径替换,前缀为settings.test.nginx_url的路径
