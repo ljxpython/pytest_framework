@@ -152,7 +152,7 @@ class FlaskClient(BaseClient):
         if not password:
             password = self.password
         return self.post(
-            "/api/user/login", json={"username": username, "password": password}
+            "/api/user/login", json={"username": username, "password": password},verify=False
         )
 
     # 查询当前用户信息接口
