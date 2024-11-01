@@ -134,7 +134,8 @@ class FlaskClient(BaseClient):
         url = self.host + path
         return self.request(
             method,
-            url=url,
+            # url=url,
+            path=path,
             params=params,
             data=data,
             json=json,
@@ -283,4 +284,5 @@ if __name__ == "__main__":
     flask_clinet.login()
     resp = flask_clinet.get_current_user()
     logger.info(resp.json)
-    flask_clinet.logout()
+    resp = flask_clinet.logout()
+    logger.info(resp.json)

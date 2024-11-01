@@ -26,7 +26,12 @@ class TestGoodAddDel(object):
             4. 确认商品删除完成
         """
         with allure.step("1. 添加商品"):
-            resp = flask_clinet.add_product(name="测试商品")
+            resp = flask_clinet.add_product(
+                name="测试商品",
+                price=12,
+                type_="测试商品类型",
+                subtype="测试商品子类型",
+            )
             logger.info(f"添加商品结果: {resp.json}")
             logger.info(f"添加商品完成")
             pass
