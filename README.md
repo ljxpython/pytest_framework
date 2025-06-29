@@ -338,6 +338,7 @@ pytest-framework/
 **让更多的测试工程师受益于这个框架！**
 
 也欢迎和您进行微信交流:
+
 <img src="docs/assets/image-20250531212549739.png" alt="Description" width="300"/>
 
 
