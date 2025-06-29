@@ -384,9 +384,14 @@ pandas==2.2.3 ; python_version >= "3.12" and python_version < "4.0" \
 pathspec==0.12.1 ; python_version >= "3.12" and python_version < "4.0" \
     --hash=sha256:a0d503e138a4c123b27490a4f7beda6a01c6f288df0e4a8b79c7eb0dc7b4cc08 \
     --hash=sha256:a482d51503a1ab33b1c67a6c3813a26953dbdc71c31dacaef9a838c4e29f5712
+peewee==3.17.6 ; python_version >= "3.12" and python_version < "4.0" \
+    --hash=sha256:cea5592c6f4da1592b7cff8eaf655be6648a1f5857469e30037bf920c03fb8fb
 platformdirs==4.3.6 ; python_version >= "3.12" and python_version < "4.0" \
     --hash=sha256:357fb2acbc885b0419afd3ce3ed34564c13c9b95c89360cd9563f73aa5e2b907 \
     --hash=sha256:73e575e1408ab8103900836b97580d5307456908a03e92031bab39e4554cc3fb
+playhouse==0.1.0 ; python_version >= "3.12" and python_version < "4.0" \
+    --hash=sha256:98e375b2ec649ad454e3af91c6cb243a37709250062a53559de3ec54044c8a28 \
+    --hash=sha256:ba6b851f8bba7cf083b0289f64729b717f4e8bd552d2ba3dfc6fc1f76fdd40a1
 pluggy==1.5.0 ; python_version >= "3.12" and python_version < "4.0" \
     --hash=sha256:2cffa88e94fdc978c4c574f15f9e59b7f4201d439195c3715ca9e2486f1d0cf1 \
     --hash=sha256:44e1ad92c8ca002de6377e165f3e0f1be63266ab4d554740532335b9d75ea669
@@ -408,6 +413,9 @@ pyasn1==0.6.1 ; python_version >= "3.12" and python_version < "4.0" \
 pycparser==2.22 ; python_version >= "3.12" and python_version < "4.0" and platform_python_implementation != "PyPy" \
     --hash=sha256:491c8be9c040f5390f5bf44a5b07752bd07f56edf992381b05c701439eec10f6 \
     --hash=sha256:c3702b6d3dd8c7abc1afa565d7e63d53a1d0bd86cdc24edd75470f4de499cfcc
+pymysql==1.1.1 ; python_version >= "3.12" and python_version < "4.0" \
+    --hash=sha256:4de15da4c61dc132f4fb9ab763063e693d521a80fd0e87943b9a453dd4c19d6c \
+    --hash=sha256:e127611aaf2b417403c60bf4dc570124aeb4a57f5f37b8e95ae399a42f904cd0
 pytest-ordering==0.6 ; python_version >= "3.12" and python_version < "4.0" \
     --hash=sha256:27fba3fc265f5d0f8597e7557885662c1bdc1969497cd58aff6ed21c3b617de2 \
     --hash=sha256:3f314a178dbeb6777509548727dc69edf22d6d9a2867bf2d310ab85c403380b6 \

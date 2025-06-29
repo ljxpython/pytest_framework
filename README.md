@@ -111,7 +111,7 @@ print(f"QPS: {metrics.requests_per_second}")
 
 ```bash
 # 克隆项目
-git clone https://github.com/your-repo/pytest-framework.git
+git clone https://github.com/ljxpython/pytest_framework.git
 cd pytest-framework
 
 # 安装依赖（推荐使用Poetry）
