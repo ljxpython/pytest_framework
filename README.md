@@ -10,7 +10,7 @@
 
 **一个功能强大、易于扩展的Python接口测试自动化框架**
 
-[快速开始](#-快速开始) • [文档](#-文档) • [示例](#-示例) • [贡献](#-贡献) • [社区](#-社区)
+[快速开始](#-快速开始) • [文档](#-文档) • [贡献](#-贡献)
 
 </div>
 
@@ -291,7 +291,7 @@ pytest-framework/
 
 ## 🤝 贡献
 
-我们欢迎所有形式的贡献！无论是：
+我欢迎所有形式的贡献！无论是：
 
 - 🐛 **报告Bug** - 发现问题请提交Issue
 - 💡 **功能建议** - 有好想法请告诉我们
@@ -312,9 +312,6 @@ pytest-framework/
 
 本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
 
-## 🌟 Star History
-
-[![Star History Chart](https://api.star-history.com/svg?repos=your-repo/pytest-framework&type=Date)](https://star-history.com/#your-repo/pytest-framework&Date)
 
 ## 🔗 相关链接
 
@@ -339,6 +336,10 @@ pytest-framework/
 **如果这个项目对您有帮助，请给我们一个 ⭐ Star！**
 
 **让更多的测试工程师受益于这个框架！**
+
+也欢迎和您进行微信交流:
+<img src="docs/assets/image-20250531212549739.png" alt="Description" width="300"/>
+
 
 [⬆ 回到顶部](#-pytest-framework---现代化接口测试自动化框架)
 
