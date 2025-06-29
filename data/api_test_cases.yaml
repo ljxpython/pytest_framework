@@ -1,0 +1,173 @@
+# API测试用例数据
+user_creation_cases:
+  - name: "创建有效用户"
+    description: "使用有效数据创建用户"
+    data:
+      name: "测试用户1"
+      email: "test1@example.com"
+      age: 25
+      phone: "13800138001"
+    expected:
+      status_code: 201
+      response_contains: ["id", "name", "email"]
+
+  - name: "创建重复邮箱用户"
+    description: "使用已存在的邮箱创建用户"
+    data:
+      name: "测试用户2"
+      email: "existing@example.com"
+      age: 30
+    expected:
+      status_code: 409
+      error_message: "邮箱已存在"
+
+  - name: "创建无效邮箱用户"
+    description: "使用无效邮箱格式创建用户"
+    data:
+      name: "测试用户3"
+      email: "invalid-email"
+      age: 25
+    expected:
+      status_code: 400
+      error_message: "邮箱格式无效"
+
+user_login_cases:
+  - name: "有效凭据登录"
+    description: "使用正确的用户名和密码登录"
+    data:
+      username: "testuser"
+      password: "testpass123"
+    expected:
+      status_code: 200
+      response_contains: ["access_token", "refresh_token", "user_info"]
+
+  - name: "无效密码登录"
+    description: "使用错误的密码登录"
+    data:
+      username: "testuser"
+      password: "wrongpassword"
+    expected:
+      status_code: 401
+      error_message: "用户名或密码错误"
+
+  - name: "不存在用户登录"
+    description: "使用不存在的用户名登录"
+    data:
+      username: "nonexistentuser"
+      password: "testpass123"
+    expected:
+      status_code: 404
+      error_message: "用户不存在"
+
+order_creation_cases:
+  - name: "创建普通订单"
+    description: "创建包含单个商品的订单"
+    data:
+      user_id: 123
+      items:
+        - product_id: 1001
+          quantity: 2
+          price: 99.99
+      shipping_address:
+        street: "测试街道123号"
+        city: "北京市"
+        postal_code: "100000"
+    expected:
+      status_code: 201
+      response_contains: ["order_id", "total_amount", "status"]
+
+  - name: "创建多商品订单"
+    description: "创建包含多个商品的订单"
+    data:
+      user_id: 123
+      items:
+        - product_id: 1001
+          quantity: 1
+          price: 99.99
+        - product_id: 1002
+          quantity: 3
+          price: 49.99
+      shipping_address:
+        street: "测试街道456号"
+        city: "上海市"
+        postal_code: "200000"
+    expected:
+      status_code: 201
+      total_amount: 249.96
+
+performance_test_scenarios:
+  - name: "用户列表查询性能"
+    description: "测试用户列表查询接口的性能"
+    endpoint: "/api/users"
+    method: "GET"
+    concurrent_users: 10
+    total_requests: 100
+    expected_response_time: 1.0
+    expected_error_rate: 0.01
+
+  - name: "用户创建性能"
+    description: "测试用户创建接口的性能"
+    endpoint: "/api/users"
+    method: "POST"
+    concurrent_users: 5
+    total_requests: 50
+    expected_response_time: 2.0
+    expected_error_rate: 0.05
+
+mock_responses:
+  user_service:
+    get_user_success:
+      status_code: 200
+      headers:
+        Content-Type: "application/json"
+      body:
+        code: 200
+        message: "success"
+        data:
+          id: 123
+          name: "张三"
+          email: "zhangsan@example.com"
+          created_at: "2024-01-01T00:00:00Z"
+
+    get_user_not_found:
+      status_code: 404
+      headers:
+        Content-Type: "application/json"
+      body:
+        code: 404
+        message: "用户不存在"
+        error: "USER_NOT_FOUND"
+
+    create_user_success:
+      status_code: 201
+      headers:
+        Content-Type: "application/json"
+      body:
+        code: 201
+        message: "用户创建成功"
+        data:
+          id: 124
+          name: "新用户"
+          email: "newuser@example.com"
+
+environment_configs:
+  development:
+    api_base_url: "https://dev-api.example.com"
+    database_url: "mysql://dev-db.example.com:3306/testdb"
+    timeout: 30
+    retry_times: 3
+    log_level: "DEBUG"
+
+  testing:
+    api_base_url: "https://test-api.example.com"
+    database_url: "mysql://test-db.example.com:3306/testdb"
+    timeout: 60
+    retry_times: 2
+    log_level: "INFO"
+
+  production:
+    api_base_url: "https://api.example.com"
+    database_url: "mysql://prod-db.example.com:3306/proddb"
+    timeout: 30
+    retry_times: 1
+    log_level: "WARNING"

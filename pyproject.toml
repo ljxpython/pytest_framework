@@ -1,10 +1,27 @@
 [tool.poetry]
 name = "pytest-framework"
-version = "0.1.0"
-description = "搭建接口测测试框架,可以在这个基础上进行二次封装,提高测试效率"
+version = "1.0.0"
+description = "现代化接口测试自动化框架 - 功能强大、易于扩展的Python接口测试框架"
 authors = ["ljxpython <1030470148@qq.com>"]
 license = "MIT"
 readme = "README.md"
+homepage = "https://github.com/your-repo/pytest-framework"
+repository = "https://github.com/your-repo/pytest-framework"
+documentation = "https://pytest-framework.readthedocs.io"
+keywords = ["pytest", "api-testing", "automation", "testing-framework", "http-client"]
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Testing",
+    "Topic :: Software Development :: Quality Assurance",
+]
 
 [tool.poetry.dependencies]
 python = "^3.12"
@@ -34,7 +51,67 @@ humps = "^0.2.2"
 adb-shell = "^0.4.4"
 peewee = "^3.17.6"
 pymysql = "^1.1.1"
+jsonschema = "^4.20.0"
 
+
+[tool.poetry.dev-dependencies]
+pytest-cov = "^4.0.0"
+pytest-html = "^4.1.1"
+pytest-mock = "^3.12.0"
+black = "^24.8.0"
+isort = "^5.13.2"
+flake8 = "^6.1.0"
+mypy = "^1.7.0"
+
+[tool.poetry.scripts]
+pytest-framework = "main:run_pytest"
+
+[tool.black]
+line-length = 88
+target-version = ['py38']
+include = '\.pyi?$'
+extend-exclude = '''
+/(
+  # directories
+  \.eggs
+  | \.git
+  | \.hg
+  | \.mypy_cache
+  | \.tox
+  | \.venv
+  | build
+  | dist
+)/
+'''
+
+[tool.isort]
+profile = "black"
+multi_line_output = 3
+line_length = 88
+known_first_party = ["src", "tests", "conf"]
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+ignore_missing_imports = true
+
+[tool.coverage.run]
+source = ["src"]
+omit = [
+    "*/tests/*",
+    "*/venv/*",
+    "*/__pycache__/*"
+]
+
+[tool.coverage.report]
+exclude_lines = [
+    "pragma: no cover",
+    "def __repr__",
+    "raise AssertionError",
+    "raise NotImplementedError"
+]
 
 [build-system]
 requires = ["poetry-core"]
