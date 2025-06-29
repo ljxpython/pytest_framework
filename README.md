@@ -310,16 +310,9 @@ pytest-framework/
 
 ## 📄 许可证
 
-本项目采用 MIT 许可证 - 查看 [LICENSE](LICENSE) 文件了解详情。
+本项目采用 MIT 许可证
 
 
-## 🔗 相关链接
-
-- 📖 [官方文档](./docs/)
-- 🐛 [问题反馈](https://github.com/your-repo/pytest-framework/issues)
-- 💬 [讨论区](https://github.com/your-repo/pytest-framework/discussions)
-- 📧 [邮件联系](mailto:support@example.com)
-- 🐦 [Twitter](https://twitter.com/pytest_framework)
 
 ## 🙏 致谢
 
