@@ -342,3 +342,7 @@ def start_mock_server(host: str = "localhost", port: int = 8888) -> MockServer:
     mock_server = MockServer(host, port)
     mock_server.start()
     return mock_server
+
+
+if __name__ == "__main__":
+    start_mock_server()

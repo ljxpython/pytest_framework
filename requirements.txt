@@ -389,9 +389,6 @@ peewee==3.17.6 ; python_version >= "3.12" and python_version < "4.0" \
 platformdirs==4.3.6 ; python_version >= "3.12" and python_version < "4.0" \
     --hash=sha256:357fb2acbc885b0419afd3ce3ed34564c13c9b95c89360cd9563f73aa5e2b907 \
     --hash=sha256:73e575e1408ab8103900836b97580d5307456908a03e92031bab39e4554cc3fb
-playhouse==0.1.0 ; python_version >= "3.12" and python_version < "4.0" \
-    --hash=sha256:98e375b2ec649ad454e3af91c6cb243a37709250062a53559de3ec54044c8a28 \
-    --hash=sha256:ba6b851f8bba7cf083b0289f64729b717f4e8bd552d2ba3dfc6fc1f76fdd40a1
 pluggy==1.5.0 ; python_version >= "3.12" and python_version < "4.0" \
     --hash=sha256:2cffa88e94fdc978c4c574f15f9e59b7f4201d439195c3715ca9e2486f1d0cf1 \
     --hash=sha256:44e1ad92c8ca002de6377e165f3e0f1be63266ab4d554740532335b9d75ea669

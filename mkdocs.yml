@@ -1,0 +1,87 @@
+site_name: Pytest Framework Documentation
+site_description: A comprehensive Python testing framework based on pytest
+site_author: pytest-framework team
+repo_url: https://github.com/ljxpython/pytest_framework
+repo_name: pytest_framework
+
+theme:
+  name: material
+  language: zh
+  features:
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.highlight
+    - search.share
+  palette:
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/weather-sunny
+        name: 切换到深色模式
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: blue
+      toggle:
+        icon: material/weather-night
+        name: 切换到浅色模式
+
+nav:
+  - 首页: README.md
+  - 快速开始:
+    - 安装指南: docs/quick-start/installation.md
+    - 快速入门: docs/quick-start/README.md
+    - 第一个测试: docs/quick-start/first-test.md
+  - 用户指南:
+    - 基础使用: docs/user-guide/basic-usage.md
+    - 配置管理: docs/user-guide/configuration.md
+    - 数据驱动测试: docs/user-guide/data-driven.md
+    - 断言工具: docs/user-guide/assertions.md
+    - JMESPath指南: docs/user-guide/jmespath-guide.md
+    - Mock服务器: docs/user-guide/mock-server.md
+    - 性能测试: docs/user-guide/performance.md
+    - 高级功能: docs/user-guide/advanced-features.md
+  - 架构设计:
+    - 总体架构: docs/architecture/overview.md
+    - 核心组件: docs/architecture/components.md
+    - 设计原则: docs/architecture/design-principles.md
+    - 扩展机制: docs/architecture/extension.md
+  - API参考:
+    - 核心API: docs/api-reference/core.md
+  - 最佳实践:
+    - 测试组织: docs/best-practices/test-organization.md
+  - FAQ:
+    - 常见问题: docs/faq/README.md
+
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
+  - pymdownx.superfences
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.highlight:
+      anchor_linenums: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.emoji
+
+plugins:
+  - search:
+      lang:
+        - zh
+        - en
+
+extra:
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/ljxpython/pytest_framework
+
+copyright: Copyright &copy; 2024 pytest-framework team

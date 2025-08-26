@@ -10,6 +10,8 @@ from assertpy import assert_that
 from src.client.flask_client.flask_client import flask_clinet
 from src.utils.log_moudle import logger
 
+# 该case需要后端启用服务,否则运行会报client连接失败
+
 
 class TestLoginLogout(object):
     @allure.feature("用户管理")

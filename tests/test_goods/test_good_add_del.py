@@ -12,6 +12,8 @@ from loguru import logger
 from src.client.flask_client.flask_client import flask_clinet
 
 
+# 该case需要后端启用服务,否则运行会报client连接失败
+@allure.title("商品管理-添加、删除商品")
 class TestGoodAddDel(object):
 
     @allure.feature("商品管理")

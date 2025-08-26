@@ -842,18 +842,6 @@ test = ["appdirs (==1.4.4)", "covdefaults (>=2.3)", "pytest (>=8.3.2)", "pytest-
 type = ["mypy (>=1.11.2)"]
 
 [[package]]
-name = "playhouse"
-version = "0.1.0"
-description = "This package is an example of a Dependency Hallucination. There is no code in this package, it is just a placeholder to prevent exploitation."
-optional = false
-python-versions = ">=3.0"
-groups = ["main"]
-files = [
-    {file = "playhouse-0.1.0-py3-none-any.whl", hash = "sha256:ba6b851f8bba7cf083b0289f64729b717f4e8bd552d2ba3dfc6fc1f76fdd40a1"},
-    {file = "playhouse-0.1.0.tar.gz", hash = "sha256:98e375b2ec649ad454e3af91c6cb243a37709250062a53559de3ec54044c8a28"},
-]
-
-[[package]]
 name = "pluggy"
 version = "1.5.0"
 description = "plugin and hook calling mechanisms for python"
@@ -1279,4 +1267,4 @@ dev = ["black (>=19.3b0) ; python_version >= \"3.6\"", "pytest (>=4.6.2)"]
 [metadata]
 lock-version = "2.1"
 python-versions = "^3.12"
-content-hash = "5c396431a767f3ec5afa9dc6132a61a4b6e3648021a61ccd20304877be817328"
+content-hash = "06b8132117ba04925dc72c1cdae9e9a0592bffeaa16d92f9d014e096e7ceab22"
