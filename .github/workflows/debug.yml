@@ -1,0 +1,115 @@
+name: Debug CI Issues
+
+# 触发条件：推送到debug分支或在commit消息中包含[debug]
+on:
+  push:
+    branches: [debug, debug/*]
+  workflow_dispatch:  # 手动触发
+
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: "🔍 Step 1: Checkout & Environment Info"
+      uses: actions/checkout@v4
+
+    - name: "📊 Step 2: System Information"
+      run: |
+        echo "=== System Information ==="
+        uname -a
+        cat /etc/os-release
+        echo ""
+        echo "=== Available Python versions ==="
+        ls -la /opt/hostedtoolcache/Python/
+        echo ""
+        echo "=== Environment Variables ==="
+        env | grep -E "(PYTHON|PATH|HOME)" | sort
+
+    - name: "🐍 Step 3: Setup Python"
+      uses: actions/setup-python@v4
+      with:
+        python-version: "3.12"
+
+    - name: "📋 Step 4: Python Environment Check"
+      run: |
+        echo "=== Python Version & Location ==="
+        which python
+        python --version
+        python -c "import sys; print(f'Python path: {sys.executable}')"
+        echo ""
+        echo "=== Pip Information ==="
+        which pip
+        pip --version
+        pip list | head -10
+        echo ""
+        echo "=== Python Paths ==="
+        python -c "import sys; [print(f'  {p}') for p in sys.path]"
+
+    - name: "📁 Step 5: Project Structure Check"
+      run: |
+        echo "=== Working Directory ==="
+        pwd
+        echo ""
+        echo "=== Project Files ==="
+        ls -la
+        echo ""
+        echo "=== Python Files ==="
+        find . -name "*.py" | head -10
+        echo ""
+        echo "=== Config Files ==="
+        ls -la pyproject.toml poetry.lock 2>/dev/null || echo "Config files missing"
+
+    - name: "🎭 Step 6: Install Poetry"
+      uses: snok/install-poetry@v1
+      with:
+        version: latest
+        virtualenvs-create: true
+        virtualenvs-in-project: true
+
+    - name: "🔧 Step 7: Poetry Environment Check"
+      run: |
+        echo "=== Poetry Information ==="
+        poetry --version
+        poetry config --list
+        echo ""
+        echo "=== Poetry Files Check ==="
+        poetry check
+        echo ""
+        echo "=== Virtual Environment ==="
+        poetry env info
+
+    - name: "📦 Step 8: Install Dependencies (Verbose)"
+      run: |
+        echo "=== Installing Dependencies with Verbose Output ==="
+        poetry install --no-interaction -vvv
+
+    - name: "✅ Step 9: Test Basic Imports"
+      run: |
+        echo "=== Testing Python Imports ==="
+        poetry run python -c "print('✅ Basic Python works')"
+        poetry run python -c "import sys; print('✅ sys module works')"
+        poetry run python -c "import os; print('✅ os module works')"
+        poetry run python -c "import pathlib; print('✅ pathlib works')"
+
+        echo ""
+        echo "=== Testing Project Structure ==="
+        poetry run python -c "import src; print('✅ src package works')"
+        poetry run python -c "from src.client import base_client; print('✅ base_client works')"
+        poetry run python -c "from src.utils import environment; print('✅ environment works')"
+
+    - name: "🧪 Step 10: Test Basic Pytest"
+      run: |
+        echo "=== Pytest Information ==="
+        poetry run pytest --version
+        poetry run pytest --collect-only tests/ | head -20
+
+    - name: "📤 Step 11: Save Debug Information"
+      if: always()
+      uses: actions/upload-artifact@v4
+      with:
+        name: debug-info
+        path: |
+          poetry.lock
+          .venv/
+          *.log
