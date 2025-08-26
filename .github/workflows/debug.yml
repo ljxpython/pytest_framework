@@ -82,7 +82,7 @@ jobs:
     - name: "📦 Step 8: Install Dependencies (Verbose)"
       run: |
         echo "=== Installing Dependencies with Verbose Output ==="
-        poetry install --no-interaction -vvv
+        poetry install --no-interaction --no-root -vvv
 
     - name: "✅ Step 9: Test Basic Imports"
       run: |

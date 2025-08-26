@@ -5,6 +5,7 @@ description = "现代化接口测试自动化框架 - 功能强大、易于扩�
 authors = ["ljxpython <1030470148@qq.com>"]
 license = "MIT"
 readme = "README.md"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.12"
