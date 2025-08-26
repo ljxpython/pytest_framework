@@ -16,8 +16,8 @@
 ### 1. 克隆项目
 
 ```bash
-git clone https://github.com/your-repo/pytest-framework.git
-cd pytest-framework
+git clone https://github.com/ljxpython/pytest_framework.git
+cd pytest_framework
 ```
 
 ### 2. 安装依赖
@@ -39,6 +39,8 @@ pip install -r requirements.txt
 pytest --version
 python -m pytest tests/examples/test_enhanced_features.py::TestEnvironmentConfig::test_get_config_values -v
 ```
+
+![image-20250825200947059](./assets/image-20250825200947059.png)
 
 如果看到测试通过，说明安装成功！
 
@@ -115,6 +117,10 @@ pytest -v
 pytest --alluredir=output/allure-result
 allure generate output/allure-result -o output/allure-report --clean
 ```
+
+![image-20250826105511480](./assets/image-20250826105511480.png)
+
+
 
 ### 步骤4: 查看测试报告
 

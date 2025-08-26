@@ -84,7 +84,7 @@ class TestMyFirstAPI:
         assert helper.get_value("json.age") == 30
 
         # 验证Content-Type
-        content_type = helper.get_value("headers.Content-Type")
+        content_type = helper.get_value('headers."Content-Type"')
         assert "application/json" in content_type
 
     def test_response_headers(self):

@@ -306,7 +306,6 @@ pytest-framework/
 4. **推送** 到分支 (`git push origin feature/AmazingFeature`)
 5. **创建** Pull Request
 
-详细贡献指南请查看 [CONTRIBUTING.md](./docs/extension/contributing.md)
 
 ## 📄 许可证
 

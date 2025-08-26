@@ -271,3 +271,5 @@ conf/settings.local.yaml
 **/.idea
 
 .idea
+
+.claude

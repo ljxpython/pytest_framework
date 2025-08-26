@@ -22,32 +22,81 @@ class EnvironmentManager:
         Args:
             config_dir: 配置文件目录
         """
-        self.config_dir = config_dir
+        # 确保config_dir是绝对路径
+        if not os.path.isabs(config_dir):
+            # 获取项目根目录
+            project_root = self._find_project_root()
+            self.config_dir = os.path.join(project_root, config_dir)
+        else:
+            self.config_dir = config_dir
+
         self.logger = logger
         self._current_env = None
         self._settings = None
         self._load_settings()
 
+    def _find_project_root(self) -> str:
+        """查找项目根目录"""
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+
+        # 向上查找项目标识文件
+        while current_dir != os.path.dirname(current_dir):
+            # 检查常见的项目标识文件
+            for marker in [
+                "pyproject.toml",
+                "setup.py",
+                "requirements.txt",
+                "pytest.ini",
+                ".git",
+            ]:
+                if os.path.exists(os.path.join(current_dir, marker)):
+                    return current_dir
+            current_dir = os.path.dirname(current_dir)
+
+        # 如果找不到，返回当前文件所在目录的上上级目录（假设是 src/utils/）
+        return os.path.dirname(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        )
+
     def _load_settings(self):
         """加载配置设置"""
         try:
-            self._settings = Dynaconf(
-                root_path=self.config_dir,
-                envvar_prefix="PYTEST_FRAMEWORK",
-                settings_files=[
-                    "settings.yaml",
-                    "settings.local.yaml",
-                    ".secrets.yaml",
-                ],
-                environments=True,
-                load_dotenv=True,
-                env=os.getenv("ENV", "boe"),  # 默认环境
-            )
+            # 检查配置目录是否存在
+            if not os.path.exists(self.config_dir):
+                self.logger.warning(f"配置目录不存在: {self.config_dir}，使用默认配置")
+                # 创建默认配置
+                self._settings = Dynaconf(
+                    envvar_prefix="PYTEST_FRAMEWORK",
+                    environments=True,
+                    load_dotenv=False,  # 禁用dotenv以避免路径查找问题
+                    env=os.getenv("ENV", "boe"),
+                )
+            else:
+                self._settings = Dynaconf(
+                    root_path=self.config_dir,
+                    envvar_prefix="PYTEST_FRAMEWORK",
+                    settings_files=[
+                        "settings.yaml",
+                        "settings.local.yaml",
+                        ".secrets.yaml",
+                    ],
+                    environments=True,
+                    load_dotenv=False,  # 禁用dotenv以避免路径查找问题
+                    env=os.getenv("ENV", "boe"),  # 默认环境
+                )
+
             self._current_env = self._settings.current_env
             self.logger.info(f"配置加载成功，当前环境: {self._current_env}")
         except Exception as e:
             self.logger.error(f"配置加载失败: {e}")
-            raise
+            # 提供兜底配置
+            self._settings = Dynaconf(
+                envvar_prefix="PYTEST_FRAMEWORK",
+                environments=True,
+                load_dotenv=False,
+                env=os.getenv("ENV", "boe"),
+            )
+            self._current_env = self._settings.current_env
 
     @property
     def current_env(self) -> str:

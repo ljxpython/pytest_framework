@@ -128,3 +128,17 @@ class BaseClient(object):
             *args,
             **kwargs,
         )
+
+    def delete(
+        self, path, params=None, data=None, json=None, headers=None, *args, **kwargs
+    ):
+        return self.request(
+            "DELETE",
+            path,
+            params=params,
+            data=data,
+            json=json,
+            headers=headers,
+            *args,
+            **kwargs,
+        )

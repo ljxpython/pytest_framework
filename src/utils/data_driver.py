@@ -27,9 +27,39 @@ class DataDriver:
         Args:
             data_dir: 数据文件目录
         """
-        self.data_dir = Path(data_dir)
+        # 确保data_dir是绝对路径
+        if not os.path.isabs(data_dir):
+            # 获取项目根目录
+            project_root = self._find_project_root()
+            self.data_dir = Path(project_root) / data_dir
+        else:
+            self.data_dir = Path(data_dir)
+
         self.faker = Faker("zh_CN")  # 中文数据生成器
         self.logger = logger
+
+    def _find_project_root(self) -> str:
+        """查找项目根目录"""
+        current_dir = os.path.dirname(os.path.abspath(__file__))
+
+        # 向上查找项目标识文件
+        while current_dir != os.path.dirname(current_dir):
+            # 检查常见的项目标识文件
+            for marker in [
+                "pyproject.toml",
+                "setup.py",
+                "requirements.txt",
+                "pytest.ini",
+                ".git",
+            ]:
+                if os.path.exists(os.path.join(current_dir, marker)):
+                    return current_dir
+            current_dir = os.path.dirname(current_dir)
+
+        # 如果找不到，返回当前文件所在目录的上上级目录（假设是 src/utils/）
+        return os.path.dirname(
+            os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+        )
 
     def load_excel(self, file_path: str, sheet_name: str = None) -> List[Dict]:
         """
